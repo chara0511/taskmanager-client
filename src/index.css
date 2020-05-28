@@ -309,8 +309,8 @@ aside {
   opacity: 0;
 }
 
-.tarea-enter-active,
-.proyecto-enter-active {
+.task-enter-active,
+.project-enter-active {
   opacity: 1;
   transition: opacity 200ms;
 }
@@ -329,7 +329,7 @@ aside {
 .form-user {
   background-color: var(--gray2);
   height: 100vh;
-  min-height: 800px;
+  /* min-height: 800px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -370,4 +370,5 @@ aside {
   margin-top: 2rem;
   display: block;
   opacity: 0.7;
+  text-align: end;
 }
