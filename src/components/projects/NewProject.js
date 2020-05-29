@@ -18,6 +18,12 @@ const NewProject = () => {
   // Send a project
   const onSubmitProject = (e) => {
     e.preventDefault();
+
+    // Validate project
+
+    // Add a state
+
+    // Restart form
   };
 
   return (

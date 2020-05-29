@@ -38,9 +38,9 @@ const NewAccount = () => {
           <div className="field-form">
             <label htmlFor="name">Name: </label>
             <input
-              type="text"
               id="name"
               name="name"
+              type="text"
               placeholder="Name"
               value={name}
               onChange={onChange}
@@ -50,9 +50,9 @@ const NewAccount = () => {
           <div className="field-form">
             <label htmlFor="email">Email: </label>
             <input
-              type="email"
               id="email"
               name="email"
+              type="email"
               placeholder="Email"
               value={email}
               onChange={onChange}
@@ -62,9 +62,9 @@ const NewAccount = () => {
           <div className="field-form">
             <label htmlFor="password">Password: </label>
             <input
-              type="password"
               id="password"
               name="password"
+              type="password"
               placeholder="Password"
               value={password}
               onChange={onChange}
@@ -74,9 +74,9 @@ const NewAccount = () => {
           <div className="field-form">
             <label htmlFor="confirm">Confirm password: </label>
             <input
-              type="password"
               id="confirm"
               name="confirm"
+              type="password"
               placeholder="Confirm password"
               value={confirm}
               onChange={onChange}

@@ -32,9 +32,9 @@ const Login = () => {
           <div className="field-form">
             <label htmlFor="email">Email: </label>
             <input
-              type="email"
               id="email"
               name="email"
+              type="email"
               placeholder="Email"
               value={email}
               onChange={onChange}
@@ -44,9 +44,9 @@ const Login = () => {
           <div className="field-form">
             <label htmlFor="password">Password: </label>
             <input
-              type="password"
               id="password"
               name="password"
+              type="password"
               placeholder="Password"
               value={password}
               onChange={onChange}
