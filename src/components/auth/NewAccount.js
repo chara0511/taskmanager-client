@@ -77,7 +77,7 @@ const NewAccount = () => {
               type="password"
               id="confirm"
               name="confirm"
-              placeholder="Repeat your password"
+              placeholder="Confirm password"
               value={confirm}
               onChange={onChange}
             />
@@ -93,7 +93,7 @@ const NewAccount = () => {
         </form>
 
         <Link to={"/"} className="account-link">
-          Back to login.
+          Back to <strong>Log In</strong>.
         </Link>
       </div>
     </div>

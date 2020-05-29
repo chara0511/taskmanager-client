@@ -213,7 +213,7 @@ aside {
 
 /** Tasks List **/
 
-.task-container {
+.tasks-container {
   padding: 4rem;
 }
 
@@ -363,6 +363,7 @@ aside {
 .field-form input[type="text"] {
   border: 1px solid #e1e1e1;
   padding: 1rem;
+  width: 100%;
   flex: 1;
 }
 
