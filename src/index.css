@@ -4,6 +4,8 @@
   --gray2: #2f3848;
   --gray3: #1a202d;
   --black: #000000;
+  --red: #ff0000;
+  --red1: #cb3234;
   --headingFont: "Raleway", sans-serif;
   --textFont: "Roboto", sans-serif;
 }
@@ -88,6 +90,15 @@ a {
 
 .btn-secondary {
   background-color: var(--gray1);
+}
+
+.btn-delete {
+  background-color: var(--red1);
+  color: var(--white);
+}
+
+.btn-delete:hover {
+  background: var(--red);
 }
 
 .btn-block {
