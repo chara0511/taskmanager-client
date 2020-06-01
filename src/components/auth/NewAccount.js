@@ -14,13 +14,16 @@ const NewAccount = () => {
   const { name, email, password, confirm } = user;
 
   const onChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    // validate
+    // validate empty fields
 
     // min password of 6 characters
 

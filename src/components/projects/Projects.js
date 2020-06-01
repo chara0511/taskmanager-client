@@ -8,6 +8,7 @@ const Projects = () => {
   return (
     <div className="container-app">
       <Sidebar />
+
       <div className="main-section">
         <Bar />
 
