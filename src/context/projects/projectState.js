@@ -5,7 +5,12 @@ import projectReducer from "./projectReducer";
 import projectContext from "./projectContext";
 
 // Types
-import { FORM_PROJECT, GET_PROJECTS, ADD_PROJECT } from "../../types";
+import {
+  FORM_PROJECT,
+  GET_PROJECTS,
+  ADD_PROJECT,
+  ERROR_ADD_PROJECT,
+} from "../../types";
 
 const ProjectState = (props) => {
   const projects = [
@@ -17,6 +22,7 @@ const ProjectState = (props) => {
   const initialState = {
     form: false,
     projects: [],
+    error: false,
   };
 
   // Dispatch to execute the actions
@@ -48,14 +54,23 @@ const ProjectState = (props) => {
     });
   };
 
+  // Validate showing an Error when adding a new project
+  const showError = () => {
+    dispatch({
+      type: ERROR_ADD_PROJECT,
+    });
+  };
+
   return (
     <projectContext.Provider
       value={{
         form: state.form,
         projects: state.projects,
+        error: state.error,
         showForm,
         getProjects,
         addProject,
+        showError,
       }}
     >
       {props.children}
