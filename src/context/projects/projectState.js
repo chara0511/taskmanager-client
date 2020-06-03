@@ -10,6 +10,7 @@ import {
   GET_PROJECTS,
   ADD_PROJECT,
   ERROR_ADD_PROJECT,
+  ACTUAL_PROJECT,
 } from "../../types";
 
 const ProjectState = (props) => {
@@ -23,6 +24,7 @@ const ProjectState = (props) => {
     form: false,
     projects: [],
     error: false,
+    project: null,
   };
 
   // Dispatch to execute the actions
@@ -61,16 +63,26 @@ const ProjectState = (props) => {
     });
   };
 
+  // Select a project when the user clicks
+  const actualProject = (projectId) => {
+    dispatch({
+      type: ACTUAL_PROJECT,
+      payload: projectId,
+    });
+  };
+
   return (
     <projectContext.Provider
       value={{
         form: state.form,
         projects: state.projects,
         error: state.error,
+        project: state.project,
         showForm,
         getProjects,
         addProject,
         showError,
+        actualProject,
       }}
     >
       {props.children}
