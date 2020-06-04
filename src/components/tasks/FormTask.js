@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import projectContext from "../../context/projects/projectContext";
 
 const FormTask = () => {
+  // Extract if a project is active
+  const projectsContext = useContext(projectContext);
+  const { project } = projectsContext;
+
+  // Validate
+  if (!project) return null;
+
+  // Applying array destructuring
+  //const [actualProject] = project;
+
   return (
     <div className="form">
       <form>

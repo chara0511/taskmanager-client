@@ -1,7 +1,18 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import Task from "./Task";
+import projectContext from "../../context/projects/projectContext";
 
 const ListTasks = () => {
+  // Projects from ProjectState.js
+  const projectsContext = useContext(projectContext);
+  const { project } = projectsContext;
+
+  // Validate
+  if (!project) return <h2>Select a project</h2>;
+
+  // Applying array destructuring
+  const [actualProject] = project;
+
   const tasks = [
     { name: "Choose platform", state: true },
     { name: "Choose colors", state: false },
@@ -11,7 +22,7 @@ const ListTasks = () => {
 
   return (
     <Fragment>
-      <h2>Project: Store Online</h2>
+      <h2>Project: {actualProject.name}</h2>
 
       <ul className="tasks-list">
         {tasks.length === 0 ? (
