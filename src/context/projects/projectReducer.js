@@ -4,6 +4,7 @@ import {
   ADD_PROJECT,
   ERROR_ADD_PROJECT,
   ACTUAL_PROJECT,
+  DELETE_PROJECT,
 } from "../../types";
 
 export default (state, action) => {
@@ -40,6 +41,15 @@ export default (state, action) => {
         project: state.projects.filter(
           (project) => project.id === action.payload
         ),
+      };
+
+    case DELETE_PROJECT:
+      return {
+        ...state,
+        projects: state.projects.filter(
+          (project) => project.id !== action.payload
+        ),
+        project: null,
       };
     default:
       return state;

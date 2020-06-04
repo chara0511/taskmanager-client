@@ -13,7 +13,7 @@ const ListProjects = () => {
   }, []);
 
   // Validate empty field
-  if (projects.length === 0) return null;
+  if (projects.length === 0) return <p>No projects</p>;
 
   return (
     <ul className="list-projects">
