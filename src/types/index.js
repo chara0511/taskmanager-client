@@ -1,3 +1,5 @@
+// FOR PROJECTS
+
 export const FORM_PROJECT = "FORM_PROJECT";
 
 export const GET_PROJECTS = "GET_PROJECTS";
@@ -9,3 +11,7 @@ export const ERROR_ADD_PROJECT = "ERROR_ADD_PROJECT";
 export const ACTUAL_PROJECT = "ACTUAL_PROJECT";
 
 export const DELETE_PROJECT = "DELETE_PROJECT";
+
+// FOR TASKS
+
+export const TASKS_PROJECT = "TASKS_PROJECT";

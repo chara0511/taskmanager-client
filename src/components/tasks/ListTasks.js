@@ -13,12 +13,7 @@ const ListTasks = () => {
   // Applying array destructuring
   const [actualProject] = project;
 
-  const tasks = [
-    { name: "Choose platform", state: true },
-    { name: "Choose colors", state: false },
-    { name: "Choose payment platforms", state: false },
-    { name: "Choose hosting", state: true },
-  ];
+  const tasks = [];
 
   // Delete a project
   const onClickDelete = () => {

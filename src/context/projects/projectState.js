@@ -32,6 +32,8 @@ const ProjectState = (props) => {
   const [state, dispatch] = useReducer(projectReducer, initialState);
 
   // Functions to CRUD
+
+  // Show Form
   const showForm = () => {
     dispatch({
       type: FORM_PROJECT,
