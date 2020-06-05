@@ -19,3 +19,5 @@ export const TASKS_PROJECT = "TASKS_PROJECT";
 export const ADD_TASK = "ADD_TASK ";
 
 export const ERROR_ADD_TASK = "ERROR_ADD_TASK";
+
+export const DELETE_TASK = "DELETE_TASK ";

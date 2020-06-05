@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import projectContext from "../../context/projects/projectContext";
+import taskContext from "../../context/tasks/taskContext";
 
 const Task = ({ task }) => {
+  // Get state of projectState
+  const projectsContext = useContext(projectContext);
+  const { project } = projectsContext;
+
+  // Get state of taskState
+  const tasksContext = useContext(taskContext);
+  const { getTasks, deleteTask } = tasksContext;
+
+  // Applying array destructuring
+  const [actualProject] = project;
+
+  // Function to delete a task
+  const onClickDelete = (id) => {
+    deleteTask(id);
+    getTasks(actualProject.id);
+  };
+
   return (
     <li className="task shadow">
       <p>{task.name}</p>
@@ -22,7 +42,11 @@ const Task = ({ task }) => {
           Edit
         </button>
 
-        <button type="button" className="btn btn-secondary">
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={() => onClickDelete(task.id)}
+        >
           Delete
         </button>
       </div>
