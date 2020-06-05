@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import taskReducer from "./taskReducer";
 import taskContext from "./taskContext";
 
-import { TASKS_PROJECT, ADD_TASK } from "../../types";
+import { TASKS_PROJECT, ADD_TASK, ERROR_ADD_TASK } from "../../types";
 
 const TaskState = (props) => {
   const initialState = {
@@ -25,6 +25,7 @@ const TaskState = (props) => {
       { name: "Choose payment platforms", state: false, projectId: 3 },
     ],
     tasksproject: null,
+    errortask: false,
   };
 
   // Dispatch to execute the actions
@@ -48,13 +49,22 @@ const TaskState = (props) => {
     });
   };
 
+  // Validate and show error when adding a task
+  const errorTask = () => {
+    dispatch({
+      type: ERROR_ADD_TASK,
+    });
+  };
+
   return (
     <taskContext.Provider
       value={{
         tasks: state.tasks,
         tasksproject: state.tasksproject,
+        errortask: state.errortask,
         getTasks,
         addTask,
+        errorTask,
       }}
     >
       {props.children}
