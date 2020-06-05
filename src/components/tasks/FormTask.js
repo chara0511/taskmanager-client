@@ -12,9 +12,21 @@ const FormTask = () => {
   // Applying array destructuring
   //const [actualProject] = project;
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    // validate
+
+    // pass validation
+
+    // send a new task
+
+    // restart form
+  };
+
   return (
     <div className="form">
-      <form>
+      <form onSubmit={onSubmit}>
         <div className="container-input">
           <input
             type="text"

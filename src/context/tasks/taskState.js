@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import taskReducer from "./taskReducer";
 import taskContext from "./taskContext";
 
-import { TASKS_PROJECT } from "../../types";
+import { TASKS_PROJECT, ADD_TASK } from "../../types";
 
 const TaskState = (props) => {
   const initialState = {
@@ -24,6 +24,7 @@ const TaskState = (props) => {
       { name: "Choose colors", state: false, projectId: 4 },
       { name: "Choose payment platforms", state: false, projectId: 3 },
     ],
+    tasksproject: null,
   };
 
   // Dispatch to execute the actions
@@ -39,8 +40,23 @@ const TaskState = (props) => {
     });
   };
 
+  // Add a task to the selected project
+  const addTask = (task) => {
+    dispatch({
+      type: ADD_TASK,
+      payload: task,
+    });
+  };
+
   return (
-    <taskContext.Provider value={{ tasks: state.tasks, getTasks }}>
+    <taskContext.Provider
+      value={{
+        tasks: state.tasks,
+        tasksproject: state.tasksproject,
+        getTasks,
+        addTask,
+      }}
+    >
       {props.children}
     </taskContext.Provider>
   );

@@ -1,19 +1,22 @@
 import React, { Fragment, useContext } from "react";
 import Task from "./Task";
 import projectContext from "../../context/projects/projectContext";
+import taskContext from "../../context/tasks/taskContext";
 
 const ListTasks = () => {
-  // Projects from ProjectState.js
+  // Projects from projectState
   const projectsContext = useContext(projectContext);
   const { project, deleteProject } = projectsContext;
+
+  // Projects from taskState
+  const tasksContext = useContext(taskContext);
+  const { tasksproject } = tasksContext;
 
   // Validate
   if (!project) return <h2>Select a project</h2>;
 
   // Applying array destructuring
   const [actualProject] = project;
-
-  const tasks = [];
 
   // Delete a project
   const onClickDelete = () => {
@@ -25,10 +28,10 @@ const ListTasks = () => {
       <h2>Project: {actualProject.name}</h2>
 
       <ul className="tasks-list">
-        {tasks.length === 0 ? (
+        {tasksproject.length === 0 ? (
           <li className="task">No tasks</li>
         ) : (
-          tasks.map((task) => <Task task={task} />)
+          tasksproject.map((task) => <Task task={task} />)
         )}
       </ul>
 
