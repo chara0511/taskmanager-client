@@ -10,7 +10,7 @@ const Task = ({ task }) => {
 
   // Get state of taskState
   const tasksContext = useContext(taskContext);
-  const { getTasks, deleteTask } = tasksContext;
+  const { getTasks, deleteTask, changeStateTask } = tasksContext;
 
   // Applying array destructuring
   const [actualProject] = project;
@@ -21,17 +21,37 @@ const Task = ({ task }) => {
     getTasks(actualProject.id);
   };
 
+  // Function that modifies the state of tasks
+  const changeState = (task) => {
+    if (task.state) {
+      task.state = false;
+    } else {
+      task.state = true;
+    }
+
+    changeStateTask(task);
+  };
+
   return (
     <li className="task shadow">
       <p>{task.name}</p>
 
       <div className="state">
         {task.state ? (
-          <button type="button" className="complete">
+          <button
+            type="button"
+            className="complete"
+            onClick={() => changeState(task)}
+          >
             Complete
           </button>
         ) : (
-          <button type="button" className="incomplete">
+          <button
+            type="button"
+            className="incomplete"
+            onClick={() => changeState(task)}
+            task
+          >
             Incomplete
           </button>
         )}
