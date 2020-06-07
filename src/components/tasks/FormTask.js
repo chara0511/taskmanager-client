@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 import projectContext from "../../context/projects/projectContext";
 import taskContext from "../../context/tasks/taskContext";
@@ -10,12 +10,27 @@ const FormTask = () => {
 
   // Get state of tasks
   const tasksContext = useContext(taskContext);
-  const { errortask, addTask, getTasks, errorTask } = tasksContext;
+  const {
+    errortask,
+    selectedtask,
+    addTask,
+    getTasks,
+    errorTask,
+  } = tasksContext;
 
   // State form
   const [task, setTask] = useState({
     name: "",
   });
+
+  // Detect if a task is select
+  useEffect(() => {
+    if (selectedtask !== null) {
+      setTask(selectedtask);
+    } else {
+      setTask({ name: "" });
+    }
+  }, [selectedtask]);
 
   // Extract name's project
   const { name } = task;
@@ -75,7 +90,7 @@ const FormTask = () => {
           <input
             type="submit"
             className="btn btn-primary btn-submit btn-block"
-            value="Add Task"
+            value={selectedtask ? "Edit Task" : "Add Task"}
           />
         </div>
       </form>

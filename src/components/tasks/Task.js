@@ -10,7 +10,12 @@ const Task = ({ task }) => {
 
   // Get state of taskState
   const tasksContext = useContext(taskContext);
-  const { getTasks, deleteTask, changeStateTask } = tasksContext;
+  const {
+    getTasks,
+    deleteTask,
+    changeStateTask,
+    saveActualTask,
+  } = tasksContext;
 
   // Applying array destructuring
   const [actualProject] = project;
@@ -30,6 +35,11 @@ const Task = ({ task }) => {
     }
 
     changeStateTask(task);
+  };
+
+  // Add an actual task to edit
+  const selectTask = (task) => {
+    saveActualTask(task);
   };
 
   return (
@@ -58,7 +68,11 @@ const Task = ({ task }) => {
       </div>
 
       <div className="actions">
-        <button type="button" className="btn btn-primary">
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => selectTask(task)}
+        >
           Edit
         </button>
 
