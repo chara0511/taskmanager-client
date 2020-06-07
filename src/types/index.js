@@ -25,3 +25,7 @@ export const DELETE_TASK = "DELETE_TASK ";
 export const STATE_TASK = "STATE_TASK";
 
 export const ACTUAL_TASK = "ACTUAL_TASK ";
+
+export const EDIT_TASK = "EDIT_TASK";
+
+export const CLEAN_TASK = "CLEAN_TASK";

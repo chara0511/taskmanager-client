@@ -13,6 +13,7 @@ const ListProjects = () => {
   // Get projects when the component loads
   useEffect(() => {
     getProjects();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Validate empty field

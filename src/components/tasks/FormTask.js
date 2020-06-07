@@ -13,9 +13,11 @@ const FormTask = () => {
   const {
     errortask,
     selectedtask,
-    addTask,
     getTasks,
+    addTask,
     errorTask,
+    editTask,
+    cleanTask,
   } = tasksContext;
 
   // State form
@@ -58,10 +60,21 @@ const FormTask = () => {
       return;
     }
 
-    // send a new task to taskState
-    task.projectId = actualProject.id;
-    task.state = false;
-    addTask(task);
+    // Edit or Add a task
+    if (selectedtask === null) {
+      // send a new task to taskState
+      task.projectId = actualProject.id;
+
+      task.state = false;
+
+      addTask(task);
+    } else {
+      // editing actual task
+      editTask(task);
+
+      // clean selected task od state
+      cleanTask();
+    }
 
     // Get and filter new task added
     getTasks(actualProject.id);
