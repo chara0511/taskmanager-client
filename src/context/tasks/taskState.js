@@ -44,7 +44,6 @@ const TaskState = (props) => {
   const [state, dispatch] = useReducer(taskReducer, initialState);
 
   // Main functions
-
   // Get tasks for each project
   const getTasks = (proyectId) => {
     dispatch({

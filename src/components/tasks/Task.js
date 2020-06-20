@@ -60,7 +60,6 @@ const Task = ({ task }) => {
             type="button"
             className="incomplete"
             onClick={() => changeState(task)}
-            task
           >
             Incomplete
           </button>

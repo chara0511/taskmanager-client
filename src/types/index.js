@@ -1,5 +1,4 @@
 // FOR PROJECTS
-
 export const FORM_PROJECT = "FORM_PROJECT";
 
 export const GET_PROJECTS = "GET_PROJECTS";
@@ -13,7 +12,6 @@ export const ACTUAL_PROJECT = "ACTUAL_PROJECT";
 export const DELETE_PROJECT = "DELETE_PROJECT";
 
 // FOR TASKS
-
 export const TASKS_PROJECT = "TASKS_PROJECT";
 
 export const ADD_TASK = "ADD_TASK ";
@@ -29,3 +27,8 @@ export const ACTUAL_TASK = "ACTUAL_TASK ";
 export const EDIT_TASK = "EDIT_TASK";
 
 export const CLEAN_TASK = "CLEAN_TASK";
+
+// FOR ALERT
+export const SHOW_ALERT = "SHOW_ALERT";
+
+export const HIDE_ALERT = "HIDE_ALERT";

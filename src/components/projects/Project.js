@@ -12,7 +12,7 @@ const Project = ({ project }) => {
   const tasksContext = useContext(taskContext);
   const { getTasks } = tasksContext;
 
-  // Func to add actual project
+  // Func to add actual project and get tasks
   const selectProject = (id) => {
     actualProject(id); // from projectState
     getTasks(id); // from taskState
