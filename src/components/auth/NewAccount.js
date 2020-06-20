@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import alertContext from "../../context/alerts/alertContext";
 
 const NewAccount = () => {
-  // Local hooks
+  const alertsContext = useContext(alertContext);
+  const { alert, showAlert } = alertsContext;
+
+  // State to login
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -24,7 +28,14 @@ const NewAccount = () => {
     e.preventDefault();
 
     // validate empty fields
-
+    if (
+      name.trim() === "" ||
+      email.trim() === "" ||
+      password.trim() === "" ||
+      confirm.trim() === ""
+    ) {
+      showAlert("All fields are required", "alert-error");
+    }
     // min password of 6 characters
 
     // same password
@@ -36,6 +47,10 @@ const NewAccount = () => {
     <div className="form-user">
       <div className="container-form dark">
         <h1>Sign In</h1>
+
+        {alert ? (
+          <div className={`alert ${alert.category}`}>{alert.msg}</div>
+        ) : null}
 
         <form onSubmit={onSubmit}>
           <div className="field-form">
