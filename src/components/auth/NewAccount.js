@@ -35,10 +35,19 @@ const NewAccount = () => {
       confirm.trim() === ""
     ) {
       showAlert("All fields are required", "alert-error");
+      return;
     }
     // min password of 6 characters
+    if (password.length < 6) {
+      showAlert("Password min 6 characters", "alert-error");
+      return;
+    }
 
-    // same password
+    // 2 same password
+    if (password !== confirm) {
+      showAlert("Password diferents", "alert-error");
+      return;
+    }
 
     // send to action
   };
