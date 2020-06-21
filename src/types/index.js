@@ -32,3 +32,16 @@ export const CLEAN_TASK = "CLEAN_TASK";
 export const SHOW_ALERT = "SHOW_ALERT";
 
 export const HIDE_ALERT = "HIDE_ALERT";
+
+// FOR AUTH
+export const SIGN_UP_SUCCESSFUL = "SIGN_UP_SUCCESSFUL";
+
+export const SIGN_UP_ERROR = "SIGN_UP_ERROR";
+
+export const GET_USER = "GET_USER";
+
+export const LOG_IN_SUCCESSFUL = "LOG_IN_SUCCESSFUL";
+
+export const LOG_IN_ERROR = "LOG_IN_ERROR";
+
+export const LOG_OUT = "LOG_OUT";

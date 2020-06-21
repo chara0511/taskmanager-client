@@ -55,7 +55,7 @@ const NewAccount = () => {
   return (
     <div className="form-user">
       <div className="container-form dark">
-        <h1>Sign In</h1>
+        <h1>Sign up for free start</h1>
 
         {alert ? (
           <div className={`alert ${alert.category}`}>{alert.msg}</div>
@@ -114,7 +114,7 @@ const NewAccount = () => {
             <input
               type="submit"
               className="btn btn-primary btn-block"
-              value="Sign In"
+              value="Sign Up"
             />
           </div>
         </form>
