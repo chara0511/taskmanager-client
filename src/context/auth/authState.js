@@ -4,6 +4,7 @@ import authContext from "./authContext";
 import authReducer from "./authReducer";
 
 import userAxios from "../../config/axios";
+import authToken from "../../config/token";
 
 import {
   SIGN_UP_SUCCESSFUL,
@@ -30,7 +31,7 @@ const AuthState = (props) => {
   const signUpUser = async (data) => {
     try {
       const response = await userAxios.post("/api/users", data);
-      console.log(response.data);
+      //console.log(response.data);
 
       dispatch({
         type: SIGN_UP_SUCCESSFUL,
@@ -38,7 +39,7 @@ const AuthState = (props) => {
       });
 
       // Get user
-      authUser();
+      aunthenticatedUser();
     } catch (error) {
       // console.log(error.response.data.msg);
 
@@ -55,19 +56,24 @@ const AuthState = (props) => {
   };
 
   // return auth user when sign up a user
-  const authUser = async () => {
+  const aunthenticatedUser = async () => {
     const token = localStorage.getItem("token");
 
     if (token) {
       // send token by headers
+      authToken(token);
     }
 
     try {
       const response = await userAxios.get("/api/auth");
+      //console.log(response);
 
-      console.log(response);
+      dispatch({
+        type: GET_USER,
+        payload: response.data.user,
+      });
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
 
       dispatch({ type: LOG_IN_ERROR });
     }
