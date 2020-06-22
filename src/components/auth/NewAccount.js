@@ -11,8 +11,7 @@ const NewAccount = (props) => {
   const authenticationContext = useContext(authContext);
   const { auth, message, signUpUser } = authenticationContext;
 
-  // For user auth || user signup || user duplicated
-
+  // For user mail auth || user mail signup || existing user
   useEffect(() => {
     if (auth) {
       props.history.push("/projects");

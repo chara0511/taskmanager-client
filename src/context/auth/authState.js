@@ -3,7 +3,7 @@ import React, { useReducer } from "react";
 import authContext from "./authContext";
 import authReducer from "./authReducer";
 
-import clientAxios from "../../config/axios";
+import userAxios from "../../config/axios";
 
 import {
   SIGN_UP_SUCCESSFUL,
@@ -25,15 +25,20 @@ const AuthState = (props) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   // Functions
+
+  // sign up a user
   const signUpUser = async (data) => {
     try {
-      const response = await clientAxios.post("/api/users", data);
+      const response = await userAxios.post("/api/users", data);
       console.log(response.data);
 
       dispatch({
         type: SIGN_UP_SUCCESSFUL,
         payload: response.data,
       });
+
+      // Get user
+      authUser();
     } catch (error) {
       // console.log(error.response.data.msg);
 
@@ -46,6 +51,25 @@ const AuthState = (props) => {
         type: SIGN_UP_ERROR,
         payload: alert,
       });
+    }
+  };
+
+  // return auth user when sign up a user
+  const authUser = async () => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      // send token by headers
+    }
+
+    try {
+      const response = await userAxios.get("/api/auth");
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+
+      dispatch({ type: LOG_IN_ERROR });
     }
   };
 
