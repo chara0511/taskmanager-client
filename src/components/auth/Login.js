@@ -1,7 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
+import alertContext from "../../context/alerts/alertContext";
+import authContext from "../../context/auth/authContext";
+
 const Login = () => {
+  const alertsContext = useContext(alertContext);
+  const { alert, showAlert } = alertsContext;
+
+  const authenticationContext = useContext(authContext);
+  const { auth, message, logIn } = authenticationContext;
+
   // Local hooks
   const [user, setUser] = useState({
     email: "",
@@ -22,8 +31,12 @@ const Login = () => {
     e.preventDefault();
 
     // validate empty fields
+    if (email.trim() === "" || password.trim() === "") {
+      showAlert("All fields are required", "alert-error");
+    }
 
     // send to action
+    logIn({ email, password });
   };
 
   return (
@@ -31,6 +44,9 @@ const Login = () => {
       <div className="container-form dark">
         <h1>Log In</h1>
 
+        {alert ? (
+          <div className={`alert ${alert.category}`}>{alert.msg}</div>
+        ) : null}
         <form onSubmit={onSubmit}>
           <div className="field-form">
             <label htmlFor="email">Email: </label>
