@@ -7,6 +7,7 @@ import ListTasks from "../tasks/ListTasks";
 import authContext from "../../context/auth/authContext";
 
 const Projects = () => {
+  // Get auth info
   const { aunthenticatedUser } = useContext(authContext);
 
   useEffect(() => {

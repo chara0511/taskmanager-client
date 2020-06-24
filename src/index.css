@@ -117,6 +117,18 @@ a {
   background-color: transparent;
 }
 
+.btn-logout {
+  color: var(--white);
+  padding: 0.5em;
+}
+
+.btn-logout:hover {
+  font-weight: bold;
+  color: var(--gray2);
+
+  background: var(--white);
+}
+
 @media (min-width: 768px) {
   .container-app {
     display: flex;
