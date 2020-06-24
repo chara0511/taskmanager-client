@@ -16,6 +16,7 @@ export default (state, action) => {
         ...state,
         auth: true,
         message: null,
+        loading: false,
       };
 
     case SIGN_UP_ERROR:
@@ -28,6 +29,7 @@ export default (state, action) => {
         user: null,
         auth: null,
         message: action.payload,
+        loading: false,
       };
 
     case GET_USER:
@@ -35,6 +37,7 @@ export default (state, action) => {
         ...state,
         auth: true,
         user: action.payload,
+        loading: false,
       };
 
     default:

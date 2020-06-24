@@ -18,7 +18,7 @@ const Bar = () => {
       ) : null}
 
       <nav className="main-nav">
-        <button className="btn btn-blank btn-logout" onClick={() => logOut()}>
+        <button className="btn btn-logout" onClick={() => logOut()}>
           Log out
         </button>
       </nav>

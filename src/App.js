@@ -12,6 +12,9 @@ import AuthState from "./context/auth/authState";
 
 import authToken from "./config/token";
 
+// Higherordercomponent
+import Private from "./components/routes/private";
+
 // Check if token exists
 const token = localStorage.getItem("token");
 
@@ -32,7 +35,7 @@ function App() {
 
                 <Route exact path="/new-account" component={NewAccount} />
 
-                <Route exact path="/projects" component={Projects} />
+                <Private exact path="/projects" component={Projects} />
               </Switch>
             </Router>
           </AuthState>

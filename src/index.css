@@ -118,15 +118,13 @@ a {
 }
 
 .btn-logout {
-  color: var(--white);
-  padding: 0.5em;
+  color: var(--gray1);
+  background: var(--gray3);
 }
 
 .btn-logout:hover {
-  font-weight: bold;
-  color: var(--gray2);
-
-  background: var(--white);
+  background: var(--gray1);
+  color: var(--gray3);
 }
 
 @media (min-width: 768px) {
