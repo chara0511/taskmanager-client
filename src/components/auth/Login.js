@@ -1,15 +1,26 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import alertContext from "../../context/alerts/alertContext";
 import authContext from "../../context/auth/authContext";
 
-const Login = () => {
+const Login = (props) => {
   const alertsContext = useContext(alertContext);
   const { alert, showAlert } = alertsContext;
 
   const authenticationContext = useContext(authContext);
   const { auth, message, logIn } = authenticationContext;
+
+  // For user mail not exist || password invalid
+  useEffect(() => {
+    if (auth) {
+      props.history.push("/projects");
+    }
+
+    if (message) {
+      showAlert(message.msg, message.category);
+    }
+  }, [auth, message, props.history]);
 
   // Local hooks
   const [user, setUser] = useState({

@@ -10,6 +10,15 @@ import TaskState from "./context/tasks/taskState";
 import AlertState from "./context/alerts/alertState";
 import AuthState from "./context/auth/authState";
 
+import authToken from "./config/token";
+
+// Check if token exists
+const token = localStorage.getItem("token");
+
+if (token) {
+  authToken(token);
+}
+
 function App() {
   console.log(process.env.REACT_APP_BACKEND_URL);
   return (
