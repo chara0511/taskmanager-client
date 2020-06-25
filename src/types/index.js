@@ -11,6 +11,8 @@ export const ACTUAL_PROJECT = "ACTUAL_PROJECT";
 
 export const DELETE_PROJECT = "DELETE_PROJECT";
 
+export const PROJECT_ERROR = "PROJECT_ERROR";
+
 // FOR TASKS
 export const TASKS_PROJECT = "TASKS_PROJECT";
 

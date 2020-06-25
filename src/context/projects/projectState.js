@@ -12,6 +12,7 @@ import {
   ERROR_ADD_PROJECT,
   ACTUAL_PROJECT,
   DELETE_PROJECT,
+  PROJECT_ERROR,
 } from "../../types";
 
 import userAxios from "../../config/axios";
@@ -22,6 +23,7 @@ const ProjectState = (props) => {
     projects: [],
     error: false,
     project: null,
+    message: null,
   };
 
   // Dispatch to execute the actions
@@ -87,12 +89,22 @@ const ProjectState = (props) => {
   const deleteProject = async (projectId) => {
     try {
       await userAxios.delete(`/api/projects/${projectId}`);
+
       dispatch({
         type: DELETE_PROJECT,
         payload: projectId,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
+      const alert = {
+        msg: "Error deleting project",
+        category: "alert-error",
+      };
+
+      dispatch({
+        type: PROJECT_ERROR,
+        payload: alert,
+      });
     }
   };
 
@@ -103,6 +115,7 @@ const ProjectState = (props) => {
         projects: state.projects,
         error: state.error,
         project: state.project,
+        message: state.message,
         showForm,
         getProjects,
         addProject,
