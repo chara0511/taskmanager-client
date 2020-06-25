@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { v4 as uuidv4 } from "uuid";
+
 // Hooks
 import projectReducer from "./projectReducer";
 import projectContext from "./projectContext";
@@ -14,13 +14,9 @@ import {
   DELETE_PROJECT,
 } from "../../types";
 
-const ProjectState = (props) => {
-  const projects = [
-    { id: 1, name: "Store Online" },
-    { id: 2, name: "Intranet" },
-    { id: 3, name: "Website Designs" },
-  ];
+import userAxios from "../../config/axios";
 
+const ProjectState = (props) => {
   const initialState = {
     form: false,
     projects: [],
@@ -41,22 +37,35 @@ const ProjectState = (props) => {
   };
 
   // Get projects
-  const getProjects = () => {
-    dispatch({
-      type: GET_PROJECTS,
-      payload: projects,
-    });
+  const getProjects = async () => {
+    try {
+      const response = await userAxios.get("/api/projects");
+
+      //console.log(response.data);
+      dispatch({
+        type: GET_PROJECTS,
+        payload: response.data.projects,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Adding a new project
-  const addProject = (project) => {
-    project.id = uuidv4();
+  const addProject = async (project) => {
+    try {
+      const response = await userAxios.post("/api/projects", project);
 
-    // adding a project in the state
-    dispatch({
-      type: ADD_PROJECT,
-      payload: project,
-    });
+      //console.log(response.data);
+
+      // adding a project in the state
+      dispatch({
+        type: ADD_PROJECT,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Validate showing an Error when adding a new project
@@ -75,11 +84,16 @@ const ProjectState = (props) => {
   };
 
   // Delete a project
-  const deleteProject = (projectId) => {
-    dispatch({
-      type: DELETE_PROJECT,
-      payload: projectId,
-    });
+  const deleteProject = async (projectId) => {
+    try {
+      await userAxios.delete(`/api/projects/${projectId}`);
+      dispatch({
+        type: DELETE_PROJECT,
+        payload: projectId,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

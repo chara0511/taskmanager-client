@@ -39,7 +39,7 @@ export default (state, action) => {
       return {
         ...state,
         project: state.projects.filter(
-          (project) => project.id === action.payload
+          (project) => project._id === action.payload
         ),
       };
 
@@ -47,7 +47,7 @@ export default (state, action) => {
       return {
         ...state,
         projects: state.projects.filter(
-          (project) => project.id !== action.payload
+          (project) => project._id !== action.payload
         ),
         project: null,
       };
