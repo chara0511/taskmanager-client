@@ -49,7 +49,16 @@ const ProjectState = (props) => {
         payload: response.data.projects,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
+      const alert = {
+        msg: "Error getting project",
+        category: "alert-error",
+      };
+
+      dispatch({
+        type: PROJECT_ERROR,
+        payload: alert,
+      });
     }
   };
 
@@ -66,7 +75,16 @@ const ProjectState = (props) => {
         payload: response.data,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
+      const alert = {
+        msg: "Error adding project",
+        category: "alert-error",
+      };
+
+      dispatch({
+        type: PROJECT_ERROR,
+        payload: alert,
+      });
     }
   };
 
