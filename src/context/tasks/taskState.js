@@ -26,11 +26,21 @@ const TaskState = (props) => {
 
   // Main functions
   // Get tasks for each project
-  const getTasks = (proyectId) => {
-    dispatch({
-      type: TASKS_PROJECT,
-      payload: proyectId,
-    });
+  const getTasks = async (project) => {
+    try {
+      const response = await userAxios.get("/api/tasks", {
+        params: { project },
+      });
+
+      console.log(response);
+
+      dispatch({
+        type: TASKS_PROJECT,
+        payload: response.data.tasks,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Add a task to the selected project
