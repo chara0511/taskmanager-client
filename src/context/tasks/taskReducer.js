@@ -34,7 +34,7 @@ export default (state, action) => {
       return {
         ...state,
         tasksproject: state.tasksproject.filter(
-          (task) => task.id !== action.payload
+          (task) => task._id !== action.payload
         ),
       };
 

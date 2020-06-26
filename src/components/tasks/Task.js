@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, Children } from "react";
 
 import projectContext from "../../context/projects/projectContext";
 import taskContext from "../../context/tasks/taskContext";
@@ -22,8 +22,8 @@ const Task = ({ task }) => {
 
   // Function to delete a task
   const onClickDelete = (id) => {
-    deleteTask(id);
-    getTasks(actualProject.id);
+    deleteTask(id, actualProject._id);
+    getTasks(actualProject._id);
   };
 
   // Function that modifies the state of tasks
@@ -78,7 +78,7 @@ const Task = ({ task }) => {
         <button
           type="button"
           className="btn btn-secondary"
-          onClick={() => onClickDelete(task.id)}
+          onClick={() => onClickDelete(task._id)}
         >
           Delete
         </button>

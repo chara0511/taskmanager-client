@@ -32,7 +32,7 @@ const TaskState = (props) => {
         params: { project },
       });
 
-      console.log(response);
+      //console.log(response.data.tasks);
 
       dispatch({
         type: TASKS_PROJECT,
@@ -48,11 +48,11 @@ const TaskState = (props) => {
     try {
       const response = await userAxios.post("/api/tasks", task);
 
-      console.log(response);
+      //console.log(response);
 
       dispatch({
         type: ADD_TASK,
-        payload: task,
+        payload: response.data.task,
       });
     } catch (error) {
       console.log(error);
@@ -67,11 +67,17 @@ const TaskState = (props) => {
   };
 
   // Delete task by Id
-  const deleteTask = (id) => {
-    dispatch({
-      type: DELETE_TASK,
-      payload: id,
-    });
+  const deleteTask = async (id, project) => {
+    try {
+      await userAxios.delete(`/api/tasks/${id}`, { params: { project } });
+
+      dispatch({
+        type: DELETE_TASK,
+        payload: id,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Change the state for each task
