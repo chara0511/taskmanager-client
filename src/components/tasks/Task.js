@@ -10,12 +10,7 @@ const Task = ({ task }) => {
 
   // Get state of taskState
   const tasksContext = useContext(taskContext);
-  const {
-    getTasks,
-    deleteTask,
-    changeStateTask,
-    saveActualTask,
-  } = tasksContext;
+  const { getTasks, deleteTask, editTask, saveActualTask } = tasksContext;
 
   // Applying array destructuring
   const [actualProject] = project;
@@ -34,7 +29,7 @@ const Task = ({ task }) => {
       task.state = true;
     }
 
-    changeStateTask(task);
+    editTask(task);
   };
 
   // Add an actual task to edit

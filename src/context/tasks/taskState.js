@@ -7,9 +7,8 @@ import {
   ADD_TASK,
   ERROR_ADD_TASK,
   DELETE_TASK,
-  STATE_TASK,
-  ACTUAL_TASK,
   EDIT_TASK,
+  ACTUAL_TASK,
   CLEAN_TASK,
 } from "../../types";
 import userAxios from "../../config/axios";
@@ -69,7 +68,9 @@ const TaskState = (props) => {
   // Delete task by Id
   const deleteTask = async (id, project) => {
     try {
-      await userAxios.delete(`/api/tasks/${id}`, { params: { project } });
+      await userAxios.delete(`/api/tasks/${id}`, {
+        params: { project },
+      });
 
       dispatch({
         type: DELETE_TASK,
@@ -80,26 +81,25 @@ const TaskState = (props) => {
     }
   };
 
-  // Change the state for each task
-  const changeStateTask = (task) => {
-    dispatch({
-      type: STATE_TASK,
-      payload: task,
-    });
+  // Edit a task
+  const editTask = async (task) => {
+    try {
+      const response = await userAxios.put(`/api/tasks/${task._id}`, task);
+
+      console.log(response.data.taskExists);
+      dispatch({
+        type: EDIT_TASK,
+        payload: response.data.taskExists,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Extract a task to edit
   const saveActualTask = (task) => {
     dispatch({
       type: ACTUAL_TASK,
-      payload: task,
-    });
-  };
-
-  // Edit a task
-  const editTask = (task) => {
-    dispatch({
-      type: EDIT_TASK,
       payload: task,
     });
   };
@@ -121,9 +121,8 @@ const TaskState = (props) => {
         addTask,
         errorTask,
         deleteTask,
-        changeStateTask,
-        saveActualTask,
         editTask,
+        saveActualTask,
         cleanTask,
       }}
     >
