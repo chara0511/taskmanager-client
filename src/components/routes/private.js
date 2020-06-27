@@ -7,6 +7,7 @@ const Private = ({ component: Component, ...props }) => {
 
   useEffect(() => {
     aunthenticatedUser();
+    // eslint-disable-next-line
   }, []);
 
   return (

@@ -4,8 +4,6 @@ import Project from "./Project";
 import projectContext from "../../context/projects/projectContext";
 import alertContext from "../../context/alerts/alertContext";
 
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-
 const ListProjects = () => {
   // From projectState.js
   const projectsContext = useContext(projectContext);
@@ -31,13 +29,9 @@ const ListProjects = () => {
     <ul className="list-projects">
       {alert ? <p className={`alert ${alert.category}`}>{alert.msg}</p> : null}
 
-      <TransitionGroup>
-        {projects.map((project) => (
-          <CSSTransition key={project._id} timeout={200} classNames="project">
-            <Project project={project} />
-          </CSSTransition>
-        ))}
-      </TransitionGroup>
+      {projects.map((project) => (
+        <Project key={project._id} project={project} />
+      ))}
     </ul>
   );
 };
