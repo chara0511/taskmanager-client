@@ -74,7 +74,7 @@ const AuthState = (props) => {
         payload: response.data.user,
       });
     } catch (error) {
-      console.log(error.response);
+      //console.log(error.response);
 
       dispatch({ type: LOG_IN_ERROR });
     }
@@ -93,7 +93,7 @@ const AuthState = (props) => {
       // Get user
       aunthenticatedUser();
     } catch (error) {
-      console.log(error.response.data.msg);
+      //console.log(error.response.data.msg);
 
       const alert = {
         msg: error.response.data.msg,

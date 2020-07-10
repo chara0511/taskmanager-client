@@ -38,7 +38,7 @@ const TaskState = (props) => {
         payload: response.data.tasks,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
@@ -54,7 +54,7 @@ const TaskState = (props) => {
         payload: response.data.task,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
@@ -77,7 +77,7 @@ const TaskState = (props) => {
         payload: id,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
@@ -86,13 +86,13 @@ const TaskState = (props) => {
     try {
       const response = await userAxios.put(`/api/tasks/${task._id}`, task);
 
-      console.log(response.data.taskExists);
+      //console.log(response.data.taskExists);
       dispatch({
         type: EDIT_TASK,
         payload: response.data.taskExists,
       });
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
