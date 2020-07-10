@@ -6,4 +6,4 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Page -> `https://project-taskmanager.netlify.app/`;
+Page -> https://project-taskmanager.netlify.app/;
